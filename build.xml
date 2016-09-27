@@ -56,8 +56,12 @@
     <delete dir="${testreports}"/>
   </target>
 
-  <target name="test" depends="compile-test" description="Run the test cases.">
-    <junit printsummary="yes" haltonfailure="yes" fork="yes">
+  <target name="test"
+	  depends="compile-test"
+	  description="Run the test cases.">
+    <junit printsummary="yes"
+	   haltonfailure="no"
+	   fork="yes">
       <classpath>
 	<pathelement path="${build}/test/java"/>
 	<pathelement path="${build}/main/java"/>
@@ -67,7 +71,11 @@
       
       <formatter type="plain"/>
 
-      <test name="CheckMath" haltonfailure="no" todir="${testreports}">
+      <test name="CheckMath" todir="${testreports}">
+	<formatter type="xml"/>
+      </test>
+
+      <test name="Check" todir="${testreports}">
 	<formatter type="xml"/>
       </test>
     </junit>
