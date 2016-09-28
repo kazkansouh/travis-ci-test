@@ -2,4 +2,5 @@ language: java
 
 script:
 - "ant test"
+- "for f in reports/*txt ; do grep -qe FAILED $f && (echo --- ; echo FILE: $f ; echo --- ; cat $f ; echo --- ) ; done "
 - "! grep -qe FAILED reports/*txt"
